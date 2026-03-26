@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "freertos/queue.h" // Fila para comunicação entre ISR e Task
+#include "freertos/queue.h"
 #include "driver/gpio.h"
+#include "esp_driver_gpio.h"  // <--- ESSA LINHA É A CHAVE PARA O IDF v6.0
 #include "esp_log.h"
 
 #define LED_PIN    2
