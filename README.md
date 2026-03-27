@@ -2,6 +2,8 @@
 
 Este projeto demonstra o uso de interrupções de hardware (GPIO) e filas (Queues) do FreeRTOS para controle de um LED.
 
+Implementa conceitos de Sistemas de Tempo Real (RTOS), utilizando escalonamento preemptivo e comunicação entre instâncias (ISR-to-Task) via Queues para garantir determinismo no tratamento de eventos de hardware.
+
 ## 🛠️ Especificações Técnicas
 * **Chip:** ESP32-D0WD-V3 (Revision v3.1)
 * **Arquitetura:** Dual Core + LP Core (240MHz)
