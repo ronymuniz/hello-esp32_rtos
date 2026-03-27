@@ -1,17 +1,20 @@
-# Hello ESP32 - FreeRTOS Blinky
+# Hello ESP32 RTOS - Interrupt & Queues
 
-Primeiro projeto profissional de firmware utilizando o **ESP32 DevKitV1** e o framework **ESP-IDF v6.0**.
+Este projeto demonstra o uso de interrupções de hardware (GPIO) e filas (Queues) do FreeRTOS para controle de um LED.
 
-## 🛠️ Tecnologias e Ferramentas
-- **Linguagem:** C
-- **RTOS:** FreeRTOS (Multitarefa)
-- **Framework:** ESP-IDF v6.0
-- **Hardware:** ESP32 (Dual Core Xtensa)
+## 🛠️ Especificações Técnicas
+* **Chip:** ESP32-D0WD-V3 (Revision v3.1)
+* **Arquitetura:** Dual Core + LP Core (240MHz)
+* **Recursos:** Wi-Fi, Bluetooth, 40MHz Crystal
+* **Framework:** ESP-IDF v6.0 (Padrão C gnu23)
 
-## 📋 Descrição do Projeto
-Este projeto demonstra o uso de **Tasks** do FreeRTOS para controlar periféricos de hardware (GPIO). Ao contrário do modelo de loop do Arduino, este código utiliza um escalonador de tarefas, permitindo que a CPU entre em estados de baixo consumo enquanto aguarda o tempo de delay.
+## 🚀 Funcionalidade
+O código configura o pino GPIO 0 (botão BOOT) para gerar uma interrupção na borda de descida. 
+1. A **ISR** (Interrupt Service Routine) captura o evento.
+2. O evento é enviado para uma **FreeRTOS Queue**.
+3. Uma **Task** dedicada consome a fila e inverte o estado do LED (GPIO 2).
 
-## 🚀 Como Compilar
-1. Configure o ambiente do ESP-IDF.
-2. Selecione o target: `idf.py set-target esp32`.
-3. Compile e grave: `idf.py build flash monitor`.
+## 🔧 Como compilar
+```zsh
+idf.py build
+idf.py -p /dev/cu.usbserial-0001 flash monitor

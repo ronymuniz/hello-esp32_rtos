@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-<<<<<<< HEAD
 #include "freertos/queue.h"
-=======
-#include "freertos/queue.h"    // Adicionado explicitamente para evitar erros de tipo
->>>>>>> cfcc3d8 (feat: setup interrupt lab with FreeRTOS queue for ESP-IDF v6.0)
-#include "driver/gpio.h"
-#include "esp_driver_gpio.h"  // <--- ESSA LINHA É A CHAVE PARA O IDF v6.0
+#include "driver/gpio.h"  // Use este no v6.0, ele já puxa o necessário
 #include "esp_log.h"
 
 #define LED_PIN    2
